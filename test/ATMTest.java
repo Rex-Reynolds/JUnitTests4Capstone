@@ -48,6 +48,20 @@ public class ATMTest extends ATM {
 		double actual = ATM.getBalance();
 		assertEquals(expected, actual, 0.5);
 	}
+	
+	/**
+	 * Test method for {@link edu.elon.test.ATM#deposit(double)}.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testDepositIllegalArgumentException() {
+		double amount = -5;
+		ATM.deposit(amount);
+		double expected = 5;
+		double actual = ATM.getBalance();
+		assertEquals(expected, actual, 0.5);
+	}
+	
+	
 
 	/**
 	 * Test method for {@link edu.elon.test.ATM#getBalance()}.
@@ -77,6 +91,30 @@ public class ATMTest extends ATM {
 		double amount = 5;
 		ATM.withdraw(amount);
 		double expected = 5;
+		double actual = ATM.getBalance();
+		assertEquals(expected, actual, 0.5);
+	}
+	
+	/**
+	 * Test method for IllegalArgumentException.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testWithdrawIllegalArgumentException() {
+		double amount = -5;
+		ATM.withdraw(amount);
+		double expected = 15;
+		double actual = ATM.getBalance();
+		assertEquals(expected, actual, 0.5);
+	}
+	
+	/**
+	 * Test method for IllegalArgumentException.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testWithdrawIllegalArgumentException2() {
+		double amount = 15;
+		ATM.withdraw(amount);
+		double expected = 25;
 		double actual = ATM.getBalance();
 		assertEquals(expected, actual, 0.5);
 	}
